@@ -9,6 +9,13 @@ public class PlayerModel : MonoBehaviour
 
     private int _collectibleCount;
     public event Action<int> OnCollectibleCountChanged;
+
+    private void Start()
+    {
+        Rigidbody = GetComponent<Rigidbody>();
+        CollectibleCount = 0;
+    }
+
     public int CollectibleCount
     {
         get => _collectibleCount;
@@ -17,11 +24,5 @@ public class PlayerModel : MonoBehaviour
             _collectibleCount = value;
             OnCollectibleCountChanged?.Invoke(_collectibleCount);
         }
-    }
-    
-    private void Start()
-    {
-        Rigidbody = GetComponent<Rigidbody>();
-        CollectibleCount = 0;
     }
 }
